@@ -1,0 +1,448 @@
+{
+  "earliest_year":2001,
+  "latest_year":2021,
+  "min":4,
+  "max":70,
+  "timeseries":[
+    {
+      "values":[
+        {
+          "season": "Spring",
+          "year": 2001,
+          "freq": 32
+        },
+        {
+          "season": "Spring",
+          "year": 2002,
+          "freq": 21
+        },
+        {
+          "season": "Spring",
+          "year": 2003,
+          "freq": 26
+        },
+        {
+          "season": "Spring",
+          "year": 2004,
+          "freq": 33
+        },
+        {
+          "season": "Spring",
+          "year": 2005,
+          "freq": 36
+        },
+        {
+          "season": "Spring",
+          "year": 2006,
+          "freq": 26
+        },
+        {
+          "season": "Spring",
+          "year": 2007,
+          "freq": 17
+        },
+        {
+          "season": "Spring",
+          "year": 2008,
+          "freq": 30
+        },
+        {
+          "season": "Spring",
+          "year": 2009,
+          "freq": 19
+        },
+        {
+          "season": "Spring",
+          "year": 2010,
+          "freq": 22
+        },
+        {
+          "season": "Spring",
+          "year": 2011,
+          "freq": 24
+        },
+        {
+          "season": "Spring",
+          "year": 2012,
+          "freq": 39
+        },
+        {
+          "season": "Spring",
+          "year": 2013,
+          "freq": 26
+        },
+        {
+          "season": "Spring",
+          "year": 2014,
+          "freq": 24
+        },
+        {
+          "season": "Spring",
+          "year": 2015,
+          "freq": 18
+        },
+        {
+          "season": "Spring",
+          "year": 2016,
+          "freq": 16
+        },
+        {
+          "season": "Spring",
+          "year": 2017,
+          "freq": 6
+        },
+        {
+          "season": "Spring",
+          "year": 2018,
+          "freq": 13
+        },
+        {
+          "season": "Spring",
+          "year": 2019,
+          "freq": 9
+        },
+        {
+          "season": "Spring",
+          "year": 2020,
+          "freq": 15
+        },
+        {
+          "season": "Spring",
+          "year": 2021,
+          "freq": 9
+        }
+      ],
+      "season":"Spring"
+    },
+    {
+      "values":[
+        {
+          "season": "Summer",
+          "year": 2001,
+          "freq": 60
+        },
+        {
+          "season": "Summer",
+          "year": 2002,
+          "freq": 49
+        },
+        {
+          "season": "Summer",
+          "year": 2003,
+          "freq": 55
+        },
+        {
+          "season": "Summer",
+          "year": 2004,
+          "freq": 65
+        },
+        {
+          "season": "Summer",
+          "year": 2005,
+          "freq": 57
+        },
+        {
+          "season": "Summer",
+          "year": 2006,
+          "freq": 70
+        },
+        {
+          "season": "Summer",
+          "year": 2007,
+          "freq": 47
+        },
+        {
+          "season": "Summer",
+          "year": 2008,
+          "freq": 51
+        },
+        {
+          "season": "Summer",
+          "year": 2009,
+          "freq": 53
+        },
+        {
+          "season": "Summer",
+          "year": 2010,
+          "freq": 39
+        },
+        {
+          "season": "Summer",
+          "year": 2011,
+          "freq": 50
+        },
+        {
+          "season": "Summer",
+          "year": 2012,
+          "freq": 42
+        },
+        {
+          "season": "Summer",
+          "year": 2013,
+          "freq": 44
+        },
+        {
+          "season": "Summer",
+          "year": 2014,
+          "freq": 46
+        },
+        {
+          "season": "Summer",
+          "year": 2015,
+          "freq": 24
+        },
+        {
+          "season": "Summer",
+          "year": 2016,
+          "freq": 21
+        },
+        {
+          "season": "Summer",
+          "year": 2017,
+          "freq": 30
+        },
+        {
+          "season": "Summer",
+          "year": 2018,
+          "freq": 18
+        },
+        {
+          "season": "Summer",
+          "year": 2019,
+          "freq": 16
+        },
+        {
+          "season": "Summer",
+          "year": 2020,
+          "freq": 18
+        },
+        {
+          "season": "Summer",
+          "year": 2021,
+          "freq": 14
+        }
+      ],
+      "season":"Summer"
+    },
+    {
+      "values":[
+        {
+          "season": "Fall",
+          "year": 2001,
+          "freq": 40
+        },
+        {
+          "season": "Fall",
+          "year": 2002,
+          "freq": 45
+        },
+        {
+          "season": "Fall",
+          "year": 2003,
+          "freq": 49
+        },
+        {
+          "season": "Fall",
+          "year": 2004,
+          "freq": 42
+        },
+        {
+          "season": "Fall",
+          "year": 2005,
+          "freq": 43
+        },
+        {
+          "season": "Fall",
+          "year": 2006,
+          "freq": 59
+        },
+        {
+          "season": "Fall",
+          "year": 2007,
+          "freq": 31
+        },
+        {
+          "season": "Fall",
+          "year": 2008,
+          "freq": 43
+        },
+        {
+          "season": "Fall",
+          "year": 2009,
+          "freq": 32
+        },
+        {
+          "season": "Fall",
+          "year": 2010,
+          "freq": 38
+        },
+        {
+          "season": "Fall",
+          "year": 2011,
+          "freq": 42
+        },
+        {
+          "season": "Fall",
+          "year": 2012,
+          "freq": 63
+        },
+        {
+          "season": "Fall",
+          "year": 2013,
+          "freq": 32
+        },
+        {
+          "season": "Fall",
+          "year": 2014,
+          "freq": 33
+        },
+        {
+          "season": "Fall",
+          "year": 2015,
+          "freq": 34
+        },
+        {
+          "season": "Fall",
+          "year": 2016,
+          "freq": 14
+        },
+        {
+          "season": "Fall",
+          "year": 2017,
+          "freq": 11
+        },
+        {
+          "season": "Fall",
+          "year": 2018,
+          "freq": 13
+        },
+        {
+          "season": "Fall",
+          "year": 2019,
+          "freq": 7
+        },
+        {
+          "season": "Fall",
+          "year": 2020,
+          "freq": 20
+        },
+        {
+          "season": "Fall",
+          "year": 2021,
+          "freq": 11
+        }
+      ],
+      "season":"Fall"
+    },
+    {
+      "values":[
+        {
+          "season": "Winter",
+          "year": 2001,
+          "freq": 30
+        },
+        {
+          "season": "Winter",
+          "year": 2002,
+          "freq": 12
+        },
+        {
+          "season": "Winter",
+          "year": 2003,
+          "freq": 16
+        },
+        {
+          "season": "Winter",
+          "year": 2004,
+          "freq": 33
+        },
+        {
+          "season": "Winter",
+          "year": 2005,
+          "freq": 33
+        },
+        {
+          "season": "Winter",
+          "year": 2006,
+          "freq": 18
+        },
+        {
+          "season": "Winter",
+          "year": 2007,
+          "freq": 27
+        },
+        {
+          "season": "Winter",
+          "year": 2008,
+          "freq": 20
+        },
+        {
+          "season": "Winter",
+          "year": 2009,
+          "freq": 25
+        },
+        {
+          "season": "Winter",
+          "year": 2010,
+          "freq": 18
+        },
+        {
+          "season": "Winter",
+          "year": 2011,
+          "freq": 24
+        },
+        {
+          "season": "Winter",
+          "year": 2012,
+          "freq": 45
+        },
+        {
+          "season": "Winter",
+          "year": 2013,
+          "freq": 41
+        },
+        {
+          "season": "Winter",
+          "year": 2014,
+          "freq": 22
+        },
+        {
+          "season": "Winter",
+          "year": 2015,
+          "freq": 12
+        },
+        {
+          "season": "Winter",
+          "year": 2016,
+          "freq": 16
+        },
+        {
+          "season": "Winter",
+          "year": 2017,
+          "freq": 13
+        },
+        {
+          "season": "Winter",
+          "year": 2018,
+          "freq": 7
+        },
+        {
+          "season": "Winter",
+          "year": 2019,
+          "freq": 6
+        },
+        {
+          "season": "Winter",
+          "year": 2020,
+          "freq": 4
+        },
+        {
+          "season": "Winter",
+          "year": 2021,
+          "freq": 5
+        }
+      ],
+      "season":"Winter"
+    }
+  ]
+}

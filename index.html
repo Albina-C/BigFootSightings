@@ -1,0 +1,216 @@
+<html>
+    <head>
+
+      <script src="https://d3js.org/d3.v7.min.js"></script>
+      <script src="https://d3js.org/topojson.v3.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.13.0/d3-legend.js"></script>
+
+      <style>
+
+        .state {
+          fill: white;
+        }
+        .outline {
+          fill: none;
+          stroke: lightgray;
+          stroke-width: 1px;
+        }
+
+        .gridlines .domain{
+                stroke: none;
+            }
+
+        .gridlines line{
+                stroke: #bbb;
+            }
+
+
+
+      </style>
+
+    </head>
+    <body>
+      <h1 style="margin-top: 50px; margin-left: 300px;">Bigfoot Sightings in the U.S. in the 21st Century </h1>
+      <h3 style="margin-top: 20px; margin-left: 500px; color: gray"> Project 1 by Albina, Yunjie, Cesar</h3>
+      <p id="p1">
+        <svg id="choropleth" height="500" width="750" style="background: lightblue; margin-top:30px; margin-left:250px" >
+
+        </svg>
+
+
+
+        <script id="notes1">
+
+          const svg = d3.select("#choropleth");
+          const width = svg.attr("width");
+          const height = svg.attr("height");
+          const margin = { top: 20, right: 20, bottom: 20, left: 20 };
+          const mapWidth = width - margin.left - margin.right;
+          const mapHeight = height - margin.top - margin.bottom;
+          const map = svg.append("g")
+              .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+
+          const requestData = async function() {
+
+            const us = await d3.json("./us-smaller.json");
+            console.log(us);
+
+
+            var states = topojson.feature(us, us.objects.states);
+            var statesMesh = topojson.mesh(us, us.objects.states);
+            var projection = d3.geoAlbersUsa().fitSize([mapWidth, mapHeight], states);
+            var path = d3.geoPath().projection(projection);
+            console.log(states);
+            console.log(statesMesh);
+
+            map.selectAll("path.state").data(states.features)
+                .join("path")
+                .attr("class", "state")
+                .attr("note", d => d.id)
+                .attr("d", path);
+
+
+            map.append("path").datum(statesMesh)
+                .attr("class", "outline")
+                .attr("d", path);
+
+
+            const sightings = await d3.csv("./map.csv");
+            console.log(sightings);
+
+            sightings.forEach( d => {
+              d.Position = projection([d.Longitude, d.Latitude]);
+            });
+
+
+            map.selectAll("circle").data(sightings)
+              .join("circle")
+              .attr("r",2.5)
+              .attr("fill","brown")
+              .attr("opacity",0.4)
+              .attr("cx", d => d.Position[0])
+              .attr("cy", d => d.Position[1]);
+
+
+        }
+
+        requestData();
+
+
+        </script>
+        <p style="margin-left:375px;margin-top:0px; color:gray">Figure 1: A U.S. Map With Circles Representing Bigfoot Sightings</p>
+      </p>
+
+
+
+
+      <p id="2">
+        <svg id="full" height="400" width="800" style="margin-top:75px; margin-left:220px";>
+          <script>
+            d3.json("./yearseason2.json", d3.autoType).then( (data) => {
+
+
+              console.log(data)
+
+              const svg = d3.select("svg#full");
+              const width = svg.attr("width");
+              const height = svg.attr("height");
+              const margin = {top: 10, right: 10, bottom: 50, left: 50};
+              const chartWidth = width - margin.left - margin.right;
+              const chartHeight = height - margin.top - margin.bottom;
+
+              let annotations = svg.append("g").attr("id","annotations");
+              let chartArea = svg.append("g").attr("id","points")
+                              .attr("transform",`translate(${margin.left},${margin.top})`);
+
+
+              const timeParser = d3.timeParse('%Y');
+              let early = timeParser(data['earliest_year']);
+              let late = timeParser(data['latest_year']);
+              const yearScale = d3.scaleTime().domain([early,late]).range([0,chartWidth]);
+
+              const freqScale = d3.scaleLinear().domain([data['min'],data['max']]).range([chartHeight, 0]);
+
+
+              const outcomeScale = d3.scaleOrdinal(d3.schemeCategory10);
+
+
+
+              let bottomAxis = d3.axisBottom(yearScale)
+              let bottomGridlines = d3.axisBottom(yearScale)
+                                      .tickSize(-chartHeight-10)
+                                      .tickFormat("")
+              annotations.append("g")
+                .attr("class", "x axis")
+                .attr("transform",`translate(${margin.left},${chartHeight+margin.top+10})`)
+                .call(bottomAxis);
+              annotations.append("g")
+                .attr("class", "x gridlines")
+                .attr("transform",`translate(${margin.left},${chartHeight+margin.top+10})`)
+                .call(bottomGridlines);
+
+
+              let leftAxis = d3.axisLeft(freqScale);
+              let leftGridlines = d3.axisLeft(freqScale)
+                      .tickSize(-chartWidth-10)
+                      .tickFormat("")
+
+              annotations.append("g")
+                        .attr("class", "y axis")
+                        .attr("transform",`translate(${margin.left-10},${margin.top})`)
+                        .call(leftAxis)
+              annotations.append("g")
+                        .attr("class", "y gridlines")
+                        .attr("transform",`translate(${margin.left-10},${margin.top})`)
+                        .call(leftGridlines);
+
+
+              var lineGen = d3.line()
+                              .x( d => yearScale(timeParser(d.year)) )
+                              .y( d => freqScale(d['freq']) ) /*new column*/
+                              .curve(d3.curveMonotoneX);
+
+
+              let gtags =  chartArea.selectAll("g").data(data.timeseries)
+                                      .join("g")
+                                      .attr("class", 'line')
+                                      .style("stroke", d => outcomeScale(d.season));
+
+
+              gtags.append("path")
+                    .attr('d', d => lineGen(d.values))
+                    .attr("fill","none")
+                    .style("stroke-width","2");
+
+              gtags.selectAll("circle").data(d => d.values)
+                    .join("circle")
+                    .attr("cx", d => yearScale(timeParser(d.year)))
+                    .attr("cy", d => freqScale(d.freq))
+                    .attr("r","3px")
+                    .attr("fill",d => outcomeScale(d.season));
+
+              var legend = d3.legendColor().scale(outcomeScale);
+
+              gtags.append("g")
+                    .attr("transform", "translate(650,10)")
+                    .call(legend);
+
+              gtags.append("text")
+                    .attr("x", (width / 2))
+                    .attr("y", 10+0 - (margin.top / 2))
+                    .attr("text-anchor", "middle")
+                    .style("font-size", "19px")
+                    .style("text-decoration", "underline")
+                    .style("color","black")
+                    .style("background","#f7ea54")
+                    .style("text-shadow", "none")
+                    .text("Bigfoot Sightings per Season and Year in the U.S.");
+            });
+
+          </script>
+        </svg>
+        <p style="margin-left:250px;color:gray">Figure 2: A Line Chart Visualizing the Relationship Between Year, Season, and Frequencies of Bigfoot Sightings </p>
+      </p>
+    </body>
+</html>
